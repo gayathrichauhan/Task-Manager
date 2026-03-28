@@ -1,6 +1,8 @@
 package com.gayatri.smarttask.backend.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Task {
@@ -11,6 +13,9 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)//this auto increments value
     private Long id;
+
+    @NotBlank(message = "Title cannot be empty")//used for validation
+    @Size(min=3,max=100)
     private String title;
     private String description;
 
