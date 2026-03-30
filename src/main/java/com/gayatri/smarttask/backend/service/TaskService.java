@@ -2,6 +2,7 @@ package com.gayatri.smarttask.backend.service;
 
 
 import com.gayatri.smarttask.backend.exceptionhandling.TaskNotFoundException;
+import com.gayatri.smarttask.backend.model.Status;
 import com.gayatri.smarttask.backend.model.Task;
 import com.gayatri.smarttask.backend.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ import java.util.List;
 
 @Service
 public class TaskService {
+    public List<Task> getTasksByStatus(Status status){
+        return taskRepository.findByStatus(status);
+    }
 
     @Autowired
     private TaskRepository taskRepository;

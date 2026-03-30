@@ -1,5 +1,6 @@
 package com.gayatri.smarttask.backend.controller;
 
+import com.gayatri.smarttask.backend.model.Status;
 import com.gayatri.smarttask.backend.model.Task;
 import com.gayatri.smarttask.backend.service.TaskService;
 import jakarta.validation.Valid;
@@ -27,6 +28,10 @@ public class TaskController {
     @GetMapping("/{id}")
     public Task getTaskById(@PathVariable Long id){
         return service.getTaskById(id);
+    }
+    @GetMapping("/status/{status}")
+    public List<Task> getTasksByStatus(@PathVariable Status status){
+        return service.getTasksByStatus(status);
     }
     @PutMapping("/{id}")
     public Task updateTask(@PathVariable Long id, @RequestBody Task task){

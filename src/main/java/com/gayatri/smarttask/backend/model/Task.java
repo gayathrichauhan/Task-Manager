@@ -7,6 +7,7 @@ import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
 
+
 @Entity
 public class Task {
 
@@ -26,6 +27,7 @@ public class Task {
     protected void onUpdate(){
         updatedAt=LocalDateTime.now();
     }
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -70,6 +72,8 @@ public class Task {
     public LocalDateTime getUpdatedAt(){
         return updatedAt;
     }
+
+
 
 
 }
