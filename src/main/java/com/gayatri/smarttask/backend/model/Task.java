@@ -3,10 +3,29 @@ package com.gayatri.smarttask.backend.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import org.springframework.cglib.core.Local;
+
+import java.time.LocalDateTime;
 
 @Entity
 public class Task {
 
+    @Column(nullable=false,updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
+
+    @PrePersist
+    protected void onCreate(){
+        createdAt= LocalDateTime.now();
+        updatedAt=LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate(){
+        updatedAt=LocalDateTime.now();
+    }
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -44,6 +63,12 @@ public class Task {
     }
     public void setStatus(Status status){
         this.status=status;
+    }
+    public LocalDateTime getCreatedAt(){
+        return createdAt;
+    }
+    public LocalDateTime getUpdatedAt(){
+        return updatedAt;
     }
 
 

@@ -15,4 +15,14 @@ public class GlobalExceptionHandler {
                 .getFieldError()
                 .getDefaultMessage();
     }
+
+    @ExceptionHandler(TaskNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleTaskNotFound(TaskNotFoundException ex){
+        return ex.getMessage();
+    }
+
+
+
+
 }
