@@ -49,6 +49,13 @@ public class TaskService {
                 .orElseThrow(()->new TaskNotFoundException("task not found wih id:"+id));
         taskRepository.delete(task);
     }
+    public Task markTaskDONE(Long id){
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new TaskNotFoundException("Task not found with id: " + id));
+
+        task.setStatus(Status.DONE);
+        return taskRepository.save(task);
+    }
 
 
 

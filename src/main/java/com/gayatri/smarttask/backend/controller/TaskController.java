@@ -43,6 +43,10 @@ public class TaskController {
         service.deleteTask(id);
         return "Task deleted successfully";
     }
+    @PutMapping("/{id}/DONE")
+    public Task MarkAsDONE(@PathVariable Long id){
+        return service.markTaskDONE(id);
+    }
 
 
 }
